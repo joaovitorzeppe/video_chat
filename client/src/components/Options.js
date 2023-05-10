@@ -49,16 +49,33 @@ const Options = ({children}) => {
                             <Typography gutterBottom variant="h6">Sua Conta</Typography>
                             <TextField label="Nome" value={name} onChange={(e) => setName(e.target.value)} fullWidth/>
                             <CopyToClipboard text={me} style={style.margin}>
-                                <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large"/>}>
+                                <Button variant="contained" color="primary" fullWidth
+                                        startIcon={<Assignment fontSize="large"/>}>
                                     Copiar seu ID
                                 </Button>
                             </CopyToClipboard>
                         </Grid>
+                        <Grid item xs={12} md={6} style={style.padding}>
+                            <Typography gutterBottom variant="h6">Chamar</Typography>
+                            <TextField label="ID do Usuário" value={idToCall}
+                                       onChange={(e) => setIdToCall(e.target.value)} fullWidth/>
+                            {callAccepted && !callEnded ? (
+                                <Button variant="contained" color="secondary"
+                                        startIcon={<PhoneDisabled fontSize="large"/>} fullWidth onClick={leaveCall}
+                                        style={style.margin}>
+                                    Desligar
+                                </Button>
+                            ) : (
+                                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large"/>}
+                                        fullWidth onClick={() => callUser(idToCall)} style={style.margin}>
+                                    Ligar
+                                </Button>
+                            )}
+                        </Grid>
                     </Grid>
                 </form>
-            </Paper>
-            Options
             {children}
+            </Paper>
         </Container>
     );
 };
