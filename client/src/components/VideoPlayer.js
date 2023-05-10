@@ -8,6 +8,7 @@ import {SocketContext} from "../SocketContext";
 const style = {
     video: {
         width: window.innerWidth < 680 ? '300px' : '550px',
+        transform: 'scaleX(-1)',
     },
     gridContainer: {
         justifyContent: 'center',
